@@ -1,0 +1,7 @@
+textarea#URLResult {
+    background: rgb(198, 198, 198);
+}
+
+input#fullURL {
+    margin-bottom: 5px;
+}

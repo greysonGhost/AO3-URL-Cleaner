@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AO3 URL Cleaner</title>
+    <script src="cleaner.js" defer></script> <!-- defer makes it so it loads last -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>AO3 URL Cleaner</h1>
+    <p>This tool will take your filtered ao3 urls and shorten them by removing all default paramaters. This will not change the search results.</p>
+    <!--Inputs-->
+    <h2>Input</h2>
+    <form id="cleanerForm">
+        <label for="fullURL">Enter URL:</label><br>
+        <input type="text" id="fullURL" placeholder="Enter URL" style="width: 50%;">
+    </form>
+    <input type="submit" value="Shorten URL" onclick="cleanURL();">
+    <button onclick="clearInput()" id="clearButton">Clear Input</button><br><br>
+
+    <!--Results-->
+    <h2>Output</h2>
+    <label for="URLResult">Shortened URL:</label><br>
+    <textarea rows="5" cols="65" id="URLResult" readonly></textarea><br>
+    <button onclick="copyToClip()">Copy</button>
+    <button onclick="openNewTab()">Open in New Tab</button>
+    <br><br>
+    <hr>
+    <h2>How it Works</h2>
+    <p>
+        When you filter the results of a tag search on Archive of Our Own, the url turns into those search paramaters so result pages are easily shareable but instead of just adding the used paramaters to the url, it adds all of them and leave the unused ones blank in the format of '&work_search[parameter]='. When you remove this section of the url, nothing in the results change therefore you can remove all the unused parameters and end up with a shorter url. This is especially apparent when you're only filtering one or two categories. For example:<br>
+        <blockquote>
+            <b>Before:</b><br>
+            https://archiveofourown.org/works?commit=Sort+and+Filter&work_search[sort_column]=revised_at&include_work_search[rating_ids][]=10&include_work_search[freeform_ids][]=110&work_search[other_tag_names]=&work_search[excluded_tag_names]=&work_search[crossover]=&work_search[complete]=&work_search[words_from]=&work_search[words_to]=&work_search[date_from]=&work_search[date_to]=&work_search[query]=&work_search[language_id]=&tag_id=Nimona+(2023)<br>
+            <b>After:</b><br>
+            https://archiveofourown.org/works?commit=Sort+and+Filter&work_search[sort_column]=revised_at&include_work_search[rating_ids][]=10&include_work_search[freeform_ids][]=110&tag_id=Nimona+(2023)'
+        </blockquote><br>
+        Both of those are working urls to get Gen only fics for Nimona (2023). Personally, when I'm sharing ao3 links with friends, I do not enjoy seeing a mammoth wall of text. The same goes for when I'm wanting to link to a results page with html and I have to scroll for several seconds sideways just to see it all.
+    </p>
+</body>
+</html>
